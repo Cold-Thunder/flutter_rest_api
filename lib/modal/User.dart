@@ -27,5 +27,25 @@ class User{
   String get fullName{
     return '${name.title} ${name.first} ${name.last}';
   }
+
+  factory User.fromMap(Map<String, dynamic> e){
+    final name = UserName.fromMap(e['name']);
+    final dob = UserDob.fromMap(e['dob']);
+
+    final location = Locations.fromMap(e['location']);
+
+    final images = UserImages.fromMap(e['picture']);
+    return User(
+        gender: e['gender'],
+        cell: e['cell'],
+        email: e['email'],
+        phone: e['phone'],
+        nat: e['nat'],
+        name: name,
+        dob: dob,
+        locations: location,
+        images: images
+    );
+  }
 }
 
